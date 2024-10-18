@@ -40,6 +40,10 @@ main {
 .actions {
   margin: 20px 0;
 }
+.main{
+
+  flex-direction: row;
+}
 
 .btn {
   background-color: #61dafb;

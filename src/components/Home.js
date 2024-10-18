@@ -29,14 +29,14 @@ const Home = () => {
         </header>
         
         <main>
-          <section className="workshop-info">
-            <p>Workshop</p>
-            <img src="https://media.giphy.com/media/3o7TKz9bX9v9KzCnXK/giphy.gif" alt="Gif de chat" />
-          </section>
+          <section className='main'>
+              <img src='/logo.png' alt='logo'></img>
           
           <section className="actions">
             <button className="btn" onClick={handleConnexionClick}>Connexion</button>
             <button className="btn" onClick={handleInscriptionClick}>Inscription</button>
+          </section>
+          
           </section>
         </main>
 
