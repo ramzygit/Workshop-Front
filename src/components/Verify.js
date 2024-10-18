@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import '../styles/Verify.css'
 
 const Verify = () => {
     const [name, setName] = useState('');
@@ -60,7 +61,7 @@ const Verify = () => {
     }
 
     return (
-        <div>
+        <div className="container">
             <h2>Verify Identity</h2>
             <form onSubmit={handleSubmit}>
                 <div>
@@ -79,6 +80,7 @@ const Verify = () => {
             </form>
         </div>
     );
+    
 };
 
 export default Verify;
