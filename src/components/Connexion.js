@@ -1,42 +1,45 @@
 import '../styles/Connexion.css';
 import React, { useState } from 'react';
 import { useAuth } from '../contexts/AuthContext';
-const axios = require('axios');
+import axios from 'axios';  // Utilisation de l'import moderne
 
 const Connexion = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
-    const { login, isAuthenticated } = useAuth();
-    
+    const { login, isAuthenticated } = useAuth(); // Récupération du contexte d'authentification
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         setError('');
 
         try {
+            console.log('Sending login request');
             const response = await axios.post('http://localhost:3001/auth/login', {
                 email,
                 password
             }, {
                 headers: {
                     'Content-Type': 'application/json',
-                    'accept': '*/*'
+                    'Accept': '*/*'
                 }
             });
+            
+            console.log('Response:', response);
 
             const data = response.data;
+            console.log('Data:', data);
 
-     
-
-            if (response.ok) {
+            // Axios gère automatiquement les erreurs HTTP, donc pas besoin de response.ok
+            if (response.status === 201) {
                 // Handle successful login
                 console.log('Login successful', data);
-                login(data.token, data.user);
+                login(data.token, data.user); // Utilisation du login du contexte
             } else {
                 setError(data.message || 'Login failed');
             }
         } catch (err) {
+            console.error('An error occurred:', err);
             setError('An error occurred. Please try again.');
         }
     };
